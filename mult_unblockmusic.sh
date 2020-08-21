@@ -168,7 +168,7 @@ echo "暴露密码music"
 echo "shadowsocks=ip:1088, method=chacha20-ietf, password=music, fast-open=false, udp-relay=false, tag=NeteaseMusic"
 }
 docker_unblock(){
-wget https://raw.githubusercontent.com/demo2099/OneStepUnblockNeteaseMusic/master/docker_unblockmusic.sh && bash docker_unblockmusic.sh
+wget https://raw.githubusercontent.com/DavidLeeMr/OneStepUnblockNeteaseMusic/master/docker_unblockmusic.sh && bash docker_unblockmusic.sh
 echo "暴露端口1080"
 }
 
