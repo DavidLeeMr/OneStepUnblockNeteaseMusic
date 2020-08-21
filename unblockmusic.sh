@@ -100,7 +100,7 @@ start_blockmuaicservice(){
   cd /root
   git clone https://github.com/nondanee/UnblockNeteaseMusic.git
   cd UnblockNeteaseMusic
-  #node app.js -s -e https://music.163.com -p 8080:8081
+  #node app.js -s -e https://music.163.com -p 1080:8081
 }
 
 install_system(){
@@ -114,7 +114,7 @@ Wants=network.target
 Type=simple
 PIDFile=/var/run/UnblockNeteaseMusic.pid
 WorkingDirectory=/root/UnblockNeteaseMusic
-ExecStart=/usr/bin/node app.js -s -e https://music.163.com -p 19980:8081
+ExecStart=/usr/bin/node app.js -s -e https://music.163.com -p 1080:8081
 RestartPreventExitStatus=23
 Restart=always
 
@@ -132,4 +132,4 @@ close_firewall
 install_node
 start_blockmuaicservice
 install_system
-echo -e "${green}安装完成端口19980${plain}"
+echo -e "${green}安装完成端口1080${plain}"
