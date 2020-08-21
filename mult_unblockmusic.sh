@@ -100,7 +100,7 @@ start_blockmuaicservice(){
   cd /root
   git clone https://github.com/nondanee/UnblockNeteaseMusic.git
   #cd UnblockNeteaseMusic
-  #node app.js -s -e https://music.163.com -p 8080:8081
+  #node app.js -s -e https://music.163.com -p 1080:8081
 }
 
 install_system(){
@@ -114,7 +114,7 @@ Wants=network.target
 Type=simple
 PIDFile=/var/run/UnblockNeteaseMusic.pid
 WorkingDirectory=/root/UnblockNeteaseMusic
-ExecStart=/usr/bin/node app.js -s -e https://music.163.com -p 19980:8081
+ExecStart=/usr/bin/node app.js -s -e https://music.163.com -p 1080:8081
 RestartPreventExitStatus=23
 Restart=always
 
@@ -132,7 +132,7 @@ close_firewall
 install_node
 start_blockmuaicservice
 install_system
-echo -e "${green}安装完成端口19980${plain}"
+echo -e "${green}安装完成端口1080${plain}"
 }
 update_unblock(){
 rm -rf UnblockNeteaseMusic
@@ -152,7 +152,7 @@ Wants=network.target
 
 [Service]
 Type=simple
-ExecStart=/root/goproxy/proxy sps -S http -T tcp -P 127.0.0.1:19980 -t tcp -p :18888 -h chacha20-ietf -j music
+ExecStart=/root/goproxy/proxy sps -S http -T tcp -P 127.0.0.1:1080 -t tcp -p :1088 -h chacha20-ietf -j music
 RestartPreventExitStatus=23
 Restart=always
 
@@ -163,13 +163,13 @@ EOF
 systemctl daemon-reload
 systemctl start gogo 
 systemctl enable gogo 
-echo "暴露端口18888"
+echo "暴露端口1088"
 echo "暴露密码music"
-echo "shadowsocks=ip:18888, method=chacha20-ietf, password=music, fast-open=false, udp-relay=false, tag=NeteaseMusic"
+echo "shadowsocks=ip:1088, method=chacha20-ietf, password=music, fast-open=false, udp-relay=false, tag=NeteaseMusic"
 }
 docker_unblock(){
 wget https://raw.githubusercontent.com/demo2099/OneStepUnblockNeteaseMusic/master/docker_unblockmusic.sh && bash docker_unblockmusic.sh
-echo "暴露端口8080"
+echo "暴露端口1080"
 }
 
 start_menu(){
