@@ -206,8 +206,8 @@ main(){
     echo -e "docker $(colorEcho $BLUE $(docker info|grep 'Server Version'|awk '{print $3}')) install success!"
 }
 start(){
-docker run -d --name unblockneteasemusic -p 8080:8080 nondanee/unblockneteasemusic:latest -s -e https://music.163.com -p 8080:8081
+docker run -d --name unblockneteasemusic -p 1080:1080 nondanee/unblockneteasemusic:latest -s -e https://music.163.com -p 1080:1081
 }
 docker_install
 start
-echo "运行完成端口8080"
+echo "运行完成端口1080"
